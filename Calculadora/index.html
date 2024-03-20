@@ -27,13 +27,13 @@
                     <input type="button" value="0" onclick="numero(0)"/>
                     <br>    
                     <h4 style="font-family: Arial, Helvetica, sans-serif;">Operaciones:</h4>
-                    <input type="button" value="+" onclick=sumar()>
-                    <input type="button" value="-" onclick=restar()>
-                    <input type="button" value="*" onclick=multiplicar()>
-                    <input type="button" value="/" onclick=dividir()>
+                    <input type="button" value="+" onclick="operacion(`+`)">
+                    <input type="button" value="-" onclick="operacion(`-`)">
+                    <input type="button" value="*" onclick="operacion(`*`)">
+                    <input type="button" value="/" onclick="operacion(`/`)">
                     <br>
                     <br>
-                    <input id="calcular" type="button" value="=" onclick="(calcular)"  />
+                    <input id="calcular" type="button" value="=" onclick="igual()"  />
                     <input id="br" type="button" value="Borrar" onclick="borrar()" />
             
                     
@@ -45,9 +45,28 @@
     </div>
     
     <script>
+        var n1,n2,res;
         function numero(n)
         {
             panel.value+=n;
+        }
+
+        function guardarn1(  )
+        {
+            var n1=document.getElementById("panel").value;
+            panel.value="";
+            
+
+            return n1;
+        }
+
+        function guardarn2()
+        {
+            var n1=document.getElementById("panel").value;
+            panel.value="";
+            
+
+            return n2;
         }
 
         function borrar()
@@ -55,25 +74,43 @@
             document.getElementById("panel").value=""
         }
         
-        function sumar()
+        function operacion(operacion)
         {   
-            var
+            var panel=document.getElementById("panel").value;
+            console.log(panel);
+            
+            panel=n1
+            
+            
+            console.log(operacion);
+
+           if (operacion==`+`)
+           {
+                res=n1+n2;
+           }
+
+           if (operacion==`-`)
+           {
+            res=n1-n2;
+           }
+
+           if (operacion==`*`)
+           {
+            res=n1*n2;
+           }
+
+           if (operacion==`/`)
+           {
+            res=n1/n2;
+           }
+        }
+
+        function igual()
+        {
+            
         }
         
-        function restar()
-        {   
-            
-        }
-
-        function multiplicar()
-        {   
-            
-        }
-
-        function dividir()
-        {   
-            
-        }
+        
     </script>
 </body>
 </html>
