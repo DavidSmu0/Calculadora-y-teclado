@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilos.css" />
+    <title>Teclados</title>
+  </head>
+  <body>
+    
+    <h1 style="text-align: center;">Mi teclado</h1>
+    <div class="panel">
+      <input id="panel" type="text" maxlength="0" />
+    </div>
+
+    <div class="teclado">
+      <br />
+      <script>
+        var l1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+        var l2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ñ"];
+        var l3 = ["Z", "X", "C", "V", "B", "N", "M"];
+
+        for (var i = 0; i < l1.length; i++) {
+          console.log(l1[i]);
+          // document.write(`<input type="button" value="" onclick="mostrar()">`);
+          document.write(
+            `<input type="button" class="letras" value="${l1[i]}" onclick="mostrar('${l1[i]}')">`
+          );
+        }
+        document.write(`<br>`);
+        for (var i = 0; i < l2.length; i++) {
+          console.log(l2[i]);
+          document.write(
+            `<input type="button" class="letras" value="${l2[i]}" onclick="mostrar('${l2[i]}')">`
+          );
+        }
+        document.write(`<br>`);
+        for (var i = 0; i < l3.length; i++) {
+          console.log(l3[i]);
+          document.write(
+            `<input type="button" class="letras" value="${l3[i]}" onclick="mostrar('${l3[i]}')">`
+          );
+        }
+
+        document.write(
+          `<input type="button" class="espacio" value="Espacio" onclick="Espacio()">`
+        );
+
+        document.write(`<br>`);
+
+        document.write(
+          `<input type="button" class="botones" value="Borrar" onclick="borrarUltima()">`
+        );
+        document.write(
+          `<input type="button" class="botones" value="Limpiar" onclick="borrarTodo()">`
+        );
+
+        document.write(`<br>`);
+
+        function borrarUltima() {
+          var valorActual = document.getElementById("panel").value;
+          if (valorActual.length > 0) {
+            document.getElementById("panel").value = valorActual.substring(
+              0,
+              valorActual.length - 1
+            );
+          }
+        }
+
+        function Espacio()
+        {
+            panel.value+=" ";
+        }
+
+        function borrarTodo() {
+          document.getElementById("panel").value = "";
+        }
+
+        function mostrar(l) {
+          panel.value += l;
+        }
+      </script>
+    </div>
+  </body>
+</html>
