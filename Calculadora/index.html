@@ -7,110 +7,76 @@
     <title>Calculadora</title>
 </head>
 <body>
-    <div class="conteiner-fluid">
-        <div class="row">
-            <div class="col-12 col-md-12">
-                <form style="text-align: center;">
-                    <br>
-                    <input type="button" value="1" onclick="numero(1)" />
-                    <input type="button" value="2" onclick="numero(2)"/>
-                    <input type="button" value="3" onclick="numero(3)"/>
-                    <br> 
-                    <input type="button" value="4" onclick="numero(4)"/>
-                    <input type="button" value="5" onclick="numero(5)"/>
-                    <input type="button" value="6" onclick="numero(6)"/>
-                    <br>
-                    <input type="button" value="7" onclick="numero(7)"/>
-                    <input type="button" value="8" onclick="numero(8)"/>
-                    <input type="button" value="9" onclick="numero(9)"/>
-                    <br>
-                    <input type="button" value="0" onclick="numero(0)"/>
-                    <br>    
-                    <h4 style="font-family: Arial, Helvetica, sans-serif;">Operaciones:</h4>
-                    <input type="button" value="+" onclick="operacion(`+`)">
-                    <input type="button" value="-" onclick="operacion(`-`)">
-                    <input type="button" value="*" onclick="operacion(`*`)">
-                    <input type="button" value="/" onclick="operacion(`/`)">
-                    <br>
-                    <br>
-                    <input id="calcular" type="button" value="=" onclick="igual()"  />
-                    <input id="br" type="button" value="Borrar" onclick="borrar()" />
-            
-                    
-                    <br><br><br>
-                    <input style="width: 20%;" id="panel" type="text" value="" maxlength="0" >
-                </form>
-            </div>
-        </div>
+    <div class="calculator">
+        <form>
+            <input type="text" id="panel" value="" maxlength="0">
+            <br>
+            <input type="button" value="1" onclick="numero(1)">
+            <input type="button" value="2" onclick="numero(2)">
+            <input type="button" value="3" onclick="numero(3)">
+            <br>
+            <input type="button" value="4" onclick="numero(4)">
+            <input type="button" value="5" onclick="numero(5)">
+            <input type="button" value="6" onclick="numero(6)">
+            <br>
+            <input type="button" value="7" onclick="numero(7)">
+            <input type="button" value="8" onclick="numero(8)">
+            <input type="button" value="9" onclick="numero(9)">
+            <br>
+            <input type="button" value="0" onclick="numero(0)">
+            <br>    
+            <h4>Operaciones:</h4>
+            <input type="button" value="+" onclick="operacion('+')">
+            <input type="button" value="-" onclick="operacion('-')">
+            <input type="button" value="*" onclick="operacion('*')">
+            <input type="button" value="/" onclick="operacion('/')">
+            <br><br>
+            <input type="button" value="=" onclick="igual()">
+            <input type="button" value="Borrar" onclick="borrar()">
+        </form>
     </div>
-    
+
     <script>
-        var n1,n2,res;
-        function numero(n)
-        {
-            panel.value+=n;
+        var n1, n2, signo;
+        var v = document.getElementById("panel");
+
+        function numero(n) {
+            panel.value += n;
         }
 
-        function guardarn1(  )
-        {
-            var n1=document.getElementById("panel").value;
-            panel.value="";
-            
-
-            return n1;
+        function borrar() {
+            document.getElementById("panel").value = "";
+            panel.value = "";
+            n1 = 0;
+            n2 = 0;
+            signo = "";
         }
 
-        function guardarn2()
-        {
-            var n1=document.getElementById("panel").value;
-            panel.value="";
-            
-
-            return n2;
+        function operacion(operacion) {
+            n1 = parseInt(panel.value);
+            signo = operacion;
+            panel.value = "";
         }
 
-        function borrar()
-        {   
-            document.getElementById("panel").value=""
+        function igual() {
+            n2 = parseInt(panel.value);
+            switch (signo) {
+                case "+":
+                    v.value = n1 + n2;
+                    break
+                case "-":
+                    v.value = n1 - n2;
+                    break
+                case "*":
+                    v.value = n1 * n2;
+                    break
+                case "/":
+                    v.value = n1 / n2;
+                    break
+                default:
+                    //
+            }
         }
-        
-        function operacion(operacion)
-        {   
-            var panel=document.getElementById("panel").value;
-            console.log(panel);
-            
-            panel=n1
-            
-            
-            console.log(operacion);
-
-           if (operacion==`+`)
-           {
-                res=n1+n2;
-           }
-
-           if (operacion==`-`)
-           {
-            res=n1-n2;
-           }
-
-           if (operacion==`*`)
-           {
-            res=n1*n2;
-           }
-
-           if (operacion==`/`)
-           {
-            res=n1/n2;
-           }
-        }
-
-        function igual()
-        {
-            
-        }
-        
-        
     </script>
 </body>
 </html>
